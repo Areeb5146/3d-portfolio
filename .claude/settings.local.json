@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:david-hckh.com)",
+      "Bash(git add:*)"
+    ]
+  }
+}
