@@ -7,9 +7,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const SOCIAL_LINKS = [
-  { label: 'GitHub', href: 'https://github.com/areebafzal' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/areebafzal' },
-  { label: 'Upwork', href: 'https://www.upwork.com/freelancers/areebafzal' },
+  { label: 'GitHub', href: 'https://github.com/Areeb5146' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/areebafzal919/' },
+  { label: 'Upwork', href: 'https://www.upwork.com/freelancers/~013e700514ee275938' },
 ];
 
 export default function Contact() {
