@@ -1,83 +1,118 @@
-# 3D Portfolio - Claude Code Instructions
+# CLAUDE.md — Portfolio Project
 
-This file contains project-specific instructions for Claude Code. All conversations will follow these guidelines.
+## Project Context
 
-## Project Overview
+Personal portfolio built with **Next.js 14 (App Router)**, **TypeScript**, **Three.js**, and **Fabric.js**.
+Goal: Showcase frontend + WebGL/canvas work. Deployed on Vercel.
 
-A 3D interactive portfolio website built with:
-- **Next.js 16** (App Router)
-- **React 19**
-- **TypeScript**
-- **Tailwind CSS v4**
-- **Three.js** via @react-three/fiber and @react-three/drei
-- **Fabric.js** for 2D canvas interactions
+---
 
-## Project Structure
+## Tech Stack & Conventions
+
+- **Framework**: Next.js 14 with App Router (`app/` directory)
+- **Language**: TypeScript — strict mode, no `any` unless justified
+- **3D**: Three.js (r3f or vanilla) for hero/interactive scenes
+- **Canvas**: Fabric.js for 2D canvas sections/demos
+- **Styling**: Tailwind CSS — utility-first, no custom CSS unless necessary
+- **Animations**: Framer Motion for UI, GSAP for complex canvas/WebGL transitions
+
+### File & Folder Structure
 
 ```
-src/
-├── app/                    # Next.js App Router pages
-│   ├── page.tsx           # Main portfolio page
-│   ├── layout.tsx         # Root layout
-│   └── globals.css        # Global styles
-├── components/
-│   ├── three/             # Three.js/R3F components
-│   │   ├── Scene.tsx      # Main 3D scene wrapper
-│   │   ├── Box.tsx        # Interactive 3D box
-│   │   └── index.ts       # Barrel exports
-│   └── fabric/            # Fabric.js components
-│       ├── FabricCanvas.tsx
-│       └── index.ts
-public/                     # Static assets
+app/
+  layout.tsx
+  page.tsx
+  (sections)/
+components/
+  three/        # Three.js components
+  fabric/       # Fabric.js canvas components
+  ui/           # Generic reusable UI
+lib/
+  three/        # Scene setup, helpers, loaders
+  fabric/       # Canvas utils
+public/
+  models/       # .glb / .gltf files
+  textures/
 ```
 
-## Development Rules
+### Component Rules
 
-### Three.js / React Three Fiber
-- Always use `'use client'` directive for R3F components
-- Use dynamic imports with `ssr: false` to avoid SSR hydration issues
-- Put 3D components inside `<Suspense>` for loading states
-- Use `@react-three/drei` helpers (OrbitControls, etc.) when available
+- Functional components only, named exports preferred
+- Three.js scenes: always dispose geometry, materials, textures on unmount
+- Fabric.js canvases: always call `canvas.dispose()` on unmount
+- SSR-safe: wrap Three.js/Fabric.js in `dynamic(() => import(...), { ssr: false })`
+- Use `useRef` for canvas/renderer refs, never `useState`
 
-### Fabric.js
-- Initialize canvas in `useEffect` with proper cleanup via `canvas.dispose()`
-- Use `'use client'` directive for Fabric components
-- Store canvas instance in a ref for cleanup
+---
 
-### Styling
-- Use Tailwind CSS for all styling
-- Follow the dark theme aesthetic (slate-900, purple-900 gradients)
-- Use backdrop-blur and semi-transparent backgrounds for modern look
+## Code Style
 
-### Code Style
-- Use TypeScript with proper interfaces for props
-- Use functional components with hooks
-- Prefer named exports from index.ts barrel files
-- Keep components small and focused
+- **No `any`** — use proper types or generics
+- **No inline styles** — Tailwind classes only
+- Prefer `const` over `let`, never `var`
+- Async: always `async/await`, no raw `.then()` chains
+- Imports: absolute paths via `@/` alias
+- Keep components under 150 lines — split if larger
 
-### Comments
-- Do NOT add AI-style comments (overly explanatory, stating the obvious)
-- Only add comments where logic is genuinely complex or non-obvious
-- Avoid comments like "// Initialize the canvas" or "// Handle click event"
-- Let code be self-documenting with good naming
+### Commit Convention
 
-### Git Commits
-- Never use "cat", "claude", "eof", or "heredoc" in commit messages
-- Write natural, human-style commit messages
-- Keep messages concise and descriptive
-
-## Commands
-
-```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run lint     # Run ESLint
+```
+feat: add hero Three.js scene
+fix: fabric canvas not disposing on route change
+perf: lazy load glb models only on viewport entry
+style: adjust hero section spacing for mobile
 ```
 
-## Future Enhancements (Planned)
+- **Never** include `cat`, `EOF`, `HEREDOC`, or shell syntax artifacts in commit messages
 
-- Add more 3D models and scenes
-- Implement project showcase section
-- Add contact form
-- Improve mobile responsiveness
-- Add loading animations
+---
+
+## Workflow Principles
+
+### Plan Before Building
+- For anything 3+ steps or architectural: think through the approach first
+- Write out the component structure before coding
+- Ask: "Would a senior engineer approve this?"
+
+### Verification Before Done
+- Never call something complete without testing it in the browser
+- Check for console errors/warnings (especially Three.js disposal warnings)
+- Test on mobile viewport — Three.js canvas must resize correctly
+- Confirm TypeScript has zero errors (`tsc --noEmit`)
+
+### Demand Elegance
+- If a solution feels hacky, pause — find the clean way
+- Avoid over-engineering simple UI sections
+- Three.js/Fabric.js code should be modular and reusable across pages
+
+### Simplicity First
+- Make every change as small as possible
+- Touch only what's needed — don't refactor unrelated code
+- No temporary fixes — find the root cause
+
+---
+
+## Common Gotchas (Project-Specific)
+
+- **Three.js + Next.js SSR**: Always dynamic import with `ssr: false`
+- **Fabric.js re-renders**: Don't put `fabric.Canvas` in React state — use refs
+- **ResizeObserver**: Always clean up on unmount to avoid memory leaks
+- **GLTF models**: Load with `useGLTF` (r3f) or `GLTFLoader` with Draco decoder
+- **Canvas z-index**: Fabric and Three canvases need explicit `position: absolute` in overlay scenarios
+
+---
+
+## Performance Targets
+
+- Lighthouse Performance: 90+
+- Three.js scene: 60fps on mid-range devices
+- Bundle: analyze with `next build && next analyze` before deploy
+- Images: always use `next/image` with proper `sizes` prop
+
+---
+
+## Out of Scope (Don't Add)
+
+- Backend / API routes (static portfolio only)
+- Auth, databases, CMS (unless explicitly added later)
+- Unit tests for Three.js scenes (not worth the setup cost here)
