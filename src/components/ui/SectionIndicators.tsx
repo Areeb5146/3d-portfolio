@@ -28,12 +28,18 @@ export default function SectionIndicators() {
       threshold: 0,
     });
 
-    for (const section of SECTIONS) {
-      const el = document.getElementById(section.id);
-      if (el) observerRef.current.observe(el);
-    }
+    const observeSections = () => {
+      for (const section of SECTIONS) {
+        const el = document.getElementById(section.id);
+        if (el) observerRef.current?.observe(el);
+      }
+    };
+
+    // Defer to ensure dynamically imported sections are in the DOM
+    const timer = setTimeout(observeSections, 200);
 
     return () => {
+      clearTimeout(timer);
       observerRef.current?.disconnect();
     };
   }, []);

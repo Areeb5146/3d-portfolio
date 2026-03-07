@@ -79,12 +79,12 @@ export default function ChatBot() {
   }, [messages, loading]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-4 right-3 z-50 sm:bottom-6 sm:right-6">
       {/* Chat Panel */}
       <div
         ref={panelRef}
-        className="absolute bottom-16 right-0 mb-2 flex w-[380px] flex-col overflow-hidden rounded-2xl border border-[#1e1e1e] bg-[#0d0d0d] shadow-2xl"
-        style={{ display: 'none', height: 520 }}
+        className="fixed bottom-20 left-3 right-3 flex flex-col overflow-hidden rounded-2xl border border-[#1e1e1e] bg-[#0d0d0d] shadow-2xl sm:absolute sm:bottom-16 sm:left-auto sm:right-0 sm:mb-2 sm:w-[380px]"
+        style={{ display: 'none', height: 'min(520px, calc(100vh - 8rem))' }}
       >
         {/* Header */}
         <div className="shrink-0 border-b border-[#1e1e1e] px-5 py-4">

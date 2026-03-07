@@ -11,7 +11,11 @@ export default function CustomCursor() {
 
   useEffect(() => {
     const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-    if (isTouchDevice) return;
+    if (isTouchDevice) {
+      if (dotRef.current) dotRef.current.style.display = 'none';
+      if (ringRef.current) ringRef.current.style.display = 'none';
+      return;
+    }
 
     const handleMouseMove = (e: MouseEvent) => {
       mouse.current.x = e.clientX;

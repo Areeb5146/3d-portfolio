@@ -30,11 +30,6 @@ const SKILL_CATEGORIES: SkillCategory[] = [
   },
 ];
 
-const MARQUEE_ITEMS = [
-  'React', 'Next.js', 'Three.js', 'Fabric.js', 'Angular', 'Vue.js',
-  'TypeScript', 'GSAP', 'WebGL', 'Tailwind', 'Redux', 'Node.js',
-];
-
 export default function Skills() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -112,21 +107,6 @@ export default function Skills() {
                 ))}
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Marquee strip */}
-      <div className="mt-24 w-full overflow-hidden border-y border-[#1e1e1e] py-5">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
-            <span
-              key={`${item}-${i}`}
-              className="mx-4 inline-flex items-center gap-4 font-mono text-xs uppercase tracking-wider text-muted"
-            >
-              {item}
-              <span className="inline-block h-1 w-1 rounded-full bg-accent" />
-            </span>
           ))}
         </div>
       </div>

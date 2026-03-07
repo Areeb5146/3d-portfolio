@@ -130,7 +130,7 @@ export default function Experience() {
           <span className="text-accent">BUILT THINGS</span>
         </h2>
 
-        <div className="relative mt-20">
+        <div className="relative mt-12 md:mt-20">
           {/* Center timeline line — hidden on mobile */}
           <div className="absolute left-0 top-0 hidden h-full w-px bg-[#1e1e1e] md:left-1/2 md:block md:-translate-x-px" />
 

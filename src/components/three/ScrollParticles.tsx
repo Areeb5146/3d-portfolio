@@ -18,9 +18,9 @@ interface TextPhase {
 }
 
 const TEXT_PHASES: TextPhase[] = [
-  { enterStart: 0.04, enterEnd: 0.12, exitStart: 0.18, exitEnd: 0.28 },
-  { enterStart: 0.24, enterEnd: 0.34, exitStart: 0.40, exitEnd: 0.50 },
-  { enterStart: 0.46, enterEnd: 0.56, exitStart: 0.62, exitEnd: 0.72 },
+  { enterStart: 0.04, enterEnd: 0.12, exitStart: 0.20, exitEnd: 0.28 },
+  { enterStart: 0.22, enterEnd: 0.32, exitStart: 0.42, exitEnd: 0.50 },
+  { enterStart: 0.46, enterEnd: 0.56, exitStart: 0.72, exitEnd: 0.80 },
 ];
 
 /* ── Helpers ── */
@@ -262,7 +262,7 @@ export default function ScrollParticles() {
       const progress = total > 0 ? scrollRef.current / total : 0;
 
       // ── Solar system (0.65 → 1.0) ──
-      const solarAlpha = smoothstep(0.64, 0.76, progress);
+      const solarAlpha = smoothstep(0.78, 0.88, progress);
       const showSolar = solarAlpha > 0.01;
 
       sunSprite.visible = showSolar;
@@ -342,24 +342,34 @@ export default function ScrollParticles() {
       <div ref={canvasRef} className="absolute inset-0" />
 
       {/* Text watermarks — character-by-character with lateral slide */}
-      {texts.map((text, idx) => (
-        <div
-          key={text}
-          ref={el => { textContainersRef.current[idx] = el; }}
-          className={`fixed top-1/2 font-display leading-none tracking-wider text-accent ${sideClasses[idx]}`}
-          style={{ visibility: 'hidden', fontSize: 'clamp(4rem, 10vw, 10rem)', transform: 'translateY(-50%)' }}
-        >
-          {text.split('').map((char, i) => (
-            <span
-              key={i}
-              className="wm-char inline-block"
-              style={{ opacity: 0 }}
-            >
-              {char === ' ' ? '\u00A0' : char}
-            </span>
-          ))}
-        </div>
-      ))}
+      {texts.map((text, idx) => {
+        const words = text.split(' ');
+        return (
+          <div
+            key={text}
+            ref={el => { textContainersRef.current[idx] = el; }}
+            className={`fixed top-1/2 font-display leading-none tracking-wider text-accent ${sideClasses[idx]}`}
+            style={{ visibility: 'hidden', fontSize: 'clamp(4rem, 10vw, 10rem)', transform: 'translateY(-50%)' }}
+          >
+            {words.map((word, wi) => (
+              <span key={wi} className="inline-block whitespace-nowrap">
+                {word.split('').map((char, ci) => (
+                  <span
+                    key={ci}
+                    className="wm-char inline-block"
+                    style={{ opacity: 0 }}
+                  >
+                    {char}
+                  </span>
+                ))}
+                {wi < words.length - 1 && (
+                  <span className="wm-char inline-block" style={{ opacity: 0 }}>{'\u00A0'}</span>
+                )}
+              </span>
+            ))}
+          </div>
+        );
+      })}
     </div>
   );
 }
