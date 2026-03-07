@@ -58,9 +58,9 @@ const jsonLd = {
     addressCountry: "PK",
   },
   sameAs: [
-    "https://github.com/areebafzal",
-    "https://linkedin.com/in/areebafzal",
-    "https://www.upwork.com/freelancers/areebafzal",
+    "https://github.com/Areeb5146",
+    "https://www.linkedin.com/in/areebafzal919/",
+    "https://www.upwork.com/freelancers/~013e700514ee275938",
   ],
   knowsAbout: [
     "WebGL",
