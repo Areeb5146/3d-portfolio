@@ -63,7 +63,7 @@ perf: lazy load glb models only on viewport entry
 style: adjust hero section spacing for mobile
 ```
 
-- **Never** include `cat`, `EOF`, `HEREDOC`, or shell syntax artifacts in commit messages
+- **Never** include `cat`, `EOF`, `HEREDOC`, `Claude`, `Co-Authored-By`, or shell syntax artifacts in commit messages
 
 ---
 
