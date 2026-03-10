@@ -194,7 +194,6 @@ export default function MatrixRain() {
         ref={canvasRef}
         className="absolute inset-0 h-full w-full"
       />
-      {/* Radial gradient overlay for center readability */}
       <div
         className="absolute inset-0"
         style={{

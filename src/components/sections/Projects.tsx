@@ -82,7 +82,6 @@ export default function Projects() {
 
   return (
     <section ref={sectionRef} id="projects" className="relative">
-      {/* Background watermark */}
       <div
         ref={headingRef}
         className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
@@ -112,7 +111,6 @@ function BrowserMockup({ url, children }: { url: string; children: React.ReactNo
   const displayUrl = url.replace(/^https?:\/\//, '');
   return (
     <div className="overflow-hidden rounded-2xl border border-[#1e1e1e] bg-[#0d0d0d]">
-      {/* Browser chrome */}
       <div className="flex items-center gap-2 border-b border-[#1e1e1e] px-4 py-3">
         <div className="flex gap-1.5">
           <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
@@ -123,7 +121,6 @@ function BrowserMockup({ url, children }: { url: string; children: React.ReactNo
           <span className="font-mono text-[10px] text-muted/50">{displayUrl}</span>
         </div>
       </div>
-      {/* Content area */}
       <div className="relative aspect-[16/9]">
         {children}
       </div>
@@ -168,7 +165,6 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
           isReversed ? 'lg:[direction:rtl]' : ''
         }`}
       >
-        {/* Text side */}
         <div className={isReversed ? 'lg:[direction:ltr]' : ''}>
           <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
             {String(index + 1).padStart(2, '0')}
@@ -205,7 +201,6 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
           )}
         </div>
 
-        {/* Preview side */}
         <div className={isReversed ? 'lg:[direction:ltr]' : ''}>
           <BrowserMockup url={project.url === '#' ? 'localhost:3000' : project.url}>
             {project.image ? (

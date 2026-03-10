@@ -132,7 +132,7 @@ export default function Hero() {
           <a
             href="#projects"
             onClick={handleScrollToWork}
-            className="rounded-full border border-foreground/20 bg-foreground px-10 py-3.5 font-mono text-xs uppercase tracking-wider text-background transition-all hover:bg-accent hover:text-background"
+            className="rounded-full border border-foreground/20 bg-foreground px-4 py-1 font-mono text-xs uppercase tracking-wider text-background transition-all hover:bg-accent hover:text-background"
             data-cursor-hover
           >
             View Work
@@ -140,7 +140,7 @@ export default function Hero() {
           <a
             href="#contact"
             onClick={handleScrollToContact}
-            className="rounded-full border border-accent/30 px-10 py-3.5 font-mono text-xs uppercase tracking-wider text-accent transition-all hover:bg-accent/10"
+            className="rounded-full border border-accent/30 px-4 py-1 font-mono text-xs uppercase tracking-wider text-accent transition-all hover:bg-accent/10"
             data-cursor-hover
           >
             Get In Touch
@@ -148,7 +148,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom gradient fade into next section */}
       <div
         className="pointer-events-none absolute bottom-0 left-0 z-5 w-full"
         style={{

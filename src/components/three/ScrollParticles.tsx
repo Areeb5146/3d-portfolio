@@ -338,10 +338,7 @@ export default function ScrollParticles() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
-      {/* Three.js canvas */}
       <div ref={canvasRef} className="absolute inset-0" />
-
-      {/* Text watermarks — character-by-character with lateral slide */}
       {texts.map((text, idx) => {
         const words = text.split(' ');
         return (

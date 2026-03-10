@@ -111,7 +111,6 @@ export default function About() {
               code — I craft experiences.
             </p>
 
-            {/* Stats grid with gap-px border trick */}
             <div ref={statsRef} className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-[#1e1e1e]">
               {STATS.map((stat) => (
                 <div

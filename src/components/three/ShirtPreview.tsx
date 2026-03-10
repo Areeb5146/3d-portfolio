@@ -54,7 +54,6 @@ function Shirt() {
           side={THREE.DoubleSide}
         />
       </mesh>
-      {/* Wireframe overlay */}
       <mesh geometry={geometry}>
         <meshBasicMaterial
           color="#4fffb0"

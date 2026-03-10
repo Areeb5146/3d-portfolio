@@ -97,7 +97,6 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="mt-32 border-t border-foreground/5 pb-12 pt-8">
         <div className="section-container flex flex-col items-center justify-between gap-4 md:flex-row">
           <span className="font-display text-lg tracking-wider text-foreground/30">AA.</span>

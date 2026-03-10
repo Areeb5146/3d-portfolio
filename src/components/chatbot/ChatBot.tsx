@@ -80,13 +80,11 @@ export default function ChatBot() {
 
   return (
     <div className="fixed bottom-4 right-3 z-50 sm:bottom-6 sm:right-6">
-      {/* Chat Panel */}
       <div
         ref={panelRef}
         className="fixed bottom-20 left-3 right-3 flex flex-col overflow-hidden rounded-2xl border border-[#1e1e1e] bg-[#0d0d0d] shadow-2xl sm:absolute sm:bottom-16 sm:left-auto sm:right-0 sm:mb-2 sm:w-[380px]"
         style={{ display: 'none', height: 'min(520px, calc(100vh - 8rem))' }}
       >
-        {/* Header */}
         <div className="shrink-0 border-b border-[#1e1e1e] px-5 py-4">
           <h3 className="font-display text-lg tracking-wider text-foreground">
             CAN AREEB BUILD IT?
@@ -96,7 +94,6 @@ export default function ChatBot() {
           </p>
         </div>
 
-        {/* Messages */}
         <div className="flex-1 overflow-y-auto px-4 py-4">
           {messages.length === 0 && !loading && (
             <div className="flex flex-col gap-2">
@@ -147,7 +144,6 @@ export default function ChatBot() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input */}
         <div className="shrink-0 border-t border-[#1e1e1e] px-4 py-3">
           <div className="flex items-center gap-2">
             <input
@@ -175,14 +171,12 @@ export default function ChatBot() {
         </div>
       </div>
 
-      {/* Floating Button */}
       <button
         onClick={() => setOpen(prev => !prev)}
         className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-accent text-background shadow-lg transition-transform hover:scale-105"
         aria-label={open ? 'Close chat' : 'Open chat'}
         data-cursor-hover
       >
-        {/* Pulse ring */}
         {!open && (
           <span className="absolute inset-0 animate-ping rounded-full bg-accent/30" />
         )}
@@ -198,7 +192,6 @@ export default function ChatBot() {
           </svg>
         )}
 
-        {/* Tooltip */}
         {!open && (
           <span className="pointer-events-none absolute bottom-full right-0 mb-2 whitespace-nowrap rounded-lg bg-surface px-3 py-1.5 font-mono text-[10px] tracking-wider text-foreground/70 opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
             Can Areeb build your project?

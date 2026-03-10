@@ -131,7 +131,6 @@ export default function Experience() {
         </h2>
 
         <div className="relative mt-12 md:mt-20">
-          {/* Center timeline line — hidden on mobile */}
           <div className="absolute left-0 top-0 hidden h-full w-px bg-[#1e1e1e] md:left-1/2 md:block md:-translate-x-px" />
 
           {EXPERIENCES.map((exp, i) => {
@@ -142,9 +141,7 @@ export default function Experience() {
                 className="timeline-card relative mb-16"
                 style={{ opacity: 0 }}
               >
-                {/* Desktop: alternating layout */}
                 <div className="hidden md:grid md:grid-cols-2 md:gap-8">
-                  {/* Left column */}
                   <div className={isLeft ? '' : 'flex items-start justify-end'}>
                     {isLeft ? (
                       <ExperienceCard exp={exp} />
@@ -157,7 +154,6 @@ export default function Experience() {
                     )}
                   </div>
 
-                  {/* Center dot */}
                   <div
                     className="absolute left-1/2 top-3 z-10 -translate-x-1/2"
                   >
@@ -170,7 +166,6 @@ export default function Experience() {
                     />
                   </div>
 
-                  {/* Right column */}
                   <div className={isLeft ? 'flex items-start' : ''}>
                     {isLeft ? (
                       <div className="pl-8 pt-2">
@@ -184,7 +179,6 @@ export default function Experience() {
                   </div>
                 </div>
 
-                {/* Mobile: stacked layout */}
                 <div className="md:hidden">
                   <div className="mb-2 font-mono text-xs uppercase tracking-wider text-muted">
                     {exp.duration}
