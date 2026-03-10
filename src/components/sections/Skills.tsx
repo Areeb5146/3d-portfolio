@@ -98,7 +98,7 @@ export default function Skills() {
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="skill-tag rounded-full border border-foreground/10 bg-surface px-4 py-2 font-mono text-xs tracking-wider text-foreground/80 transition-all hover:border-accent/30 hover:text-accent"
+                    className="skill-tag rounded-full border border-foreground/10 bg-surface px-3 py-1 font-mono text-xs tracking-wider text-foreground/80 transition-all hover:border-accent/30 hover:text-accent"
                     style={{ opacity: 0 }}
                     data-cursor-hover
                   >

@@ -74,7 +74,7 @@ export default function Navbar() {
         </ul>
         <a
           href="mailto:iareebafzal1122@gmail.com"
-          className="hidden rounded-full border border-accent/30 px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-accent transition-all hover:bg-accent/10 md:block"
+          className="hidden rounded-full border border-accent/30 px-4 py-1 font-mono text-xs uppercase tracking-wider text-accent transition-all hover:bg-accent/10 md:block"
           data-cursor-hover
         >
           Get In Touch
